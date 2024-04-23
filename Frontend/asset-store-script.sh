@@ -19,7 +19,7 @@ add_file_for_commit() { #dir , sub_dir, asset_type, asset_name, source_path
 # Function to create a Pull Request
 create_pull_request() {
     local target_repo_name="asset-store"
-
+    echo "target_repo_name"
     if [ -z "$branch_name" ]; then
         echo "Error: Branch name not provided"
         return 1
@@ -71,7 +71,7 @@ create_pull_request() {
             file_type="lottie"
         fi
         asset_type=${file_type}
-        if [[ ${sub_directory} == "main" && ${dir} == *"common"* ]]; then
+        if [[ ${sub_directory} == "main" && ${dir} == *"Common"* ]]; then
             substring="common"
             result="${dir//$substring/}" 
             add_file_for_commit "$result" "$dir" "$asset_type" "$asset_name" "$source_path"
@@ -126,6 +126,4 @@ create_pull_request() {
 
 
 # Loop through target repositories and create pull requests
-for target_repo in "${TARGET_REPOS[@]}"; do
-    create_pull_request "$target_repo" "$target_repo"
-done
+create_pull_request 
