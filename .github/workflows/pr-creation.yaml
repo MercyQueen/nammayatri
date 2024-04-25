@@ -11,9 +11,9 @@ jobs:
         working-directory: Frontend
 
     steps:
-      - name: Checkout repository 
+      - name: Checkout repository
         uses: actions/checkout@v2
-           
+          
       - name: Test changed-files
         uses: actions/checkout@v4
     
